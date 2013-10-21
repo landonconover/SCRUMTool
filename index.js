@@ -1,4 +1,6 @@
+var mongoose = require('mongoose');
 var model = require('./model.js');
+
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
