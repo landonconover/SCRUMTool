@@ -1,0 +1,17 @@
+{
+  "name": "SCRUMTool",
+  "version": "0.0.0",
+  "description": "Going Node Group Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/landonconover/SCRUMTool.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "05282ab986777801c1f2da1ab44d47de90aa91ef"
+}
