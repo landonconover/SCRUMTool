@@ -6,13 +6,16 @@ var redis = require('redis');
 var WebSocketServer = require('ws').Server
   , ws = new WebSocketServer({port: 8888});
 
+var clients = [];
 
-var broadcast = function(socket,data) {
-    for(var i in socket.clients)
-        socket.clients[i].send(data);
+
+var broadcast = function(data) {
+    for(var i in clients)
+        clients[i].send(data);
 };
 
 ws.on('connection', function(ws) {
+	clients.push(ws);
 	console.log("A New Socket is Connected");
 	ws.on('message',function(msg){
 		var data = JSON.parse(msg);
@@ -20,7 +23,7 @@ ws.on('connection', function(ws) {
 		task.stageId = data.stageId;
 		task.save(function(err, task, numberAffected) {
 			console.log('task updated');
-			broadcast(ws,task);
+			broadcast(task);
 		});
 	});	
 		console.log(data);
