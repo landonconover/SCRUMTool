@@ -16,28 +16,48 @@
       h1 small {
         font-size: 0.5em;
       }
-      
-  #sortable1, #sortable2 { list-style-type: none; margin: 0; padding: 0 0 2.5em; float: left; margin-right: 10px; }
-  #sortable1 li, #sortable2 li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; width: 120px; }
+
+      .cell {
+        border: 1px solid #aaa;
+        padding: 5px;
+        min-width: 200px;
+        min-height: 200px;
+      }
+
+      .cell li {
+        border: 1px solid #d3d3d3;
+        background: #e6e6e6 50% 50% repeat-x;
+        font-weight: normal;
+        color: #555555;
+      }
+
+  #Ready, #Development, #Done { list-style-type: none; margin: 0; padding: 0 0 100px; float: left; margin-right: 10px; }
+  #Ready li, #Development li, #Done li { margin: 0 5px 5px 5px; padding: 5px; font-size: 0.5em; width: 120px; }
   </style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script src="/js/websocket.js"></script>
   <script>
   $(function() {
-    $( "#sortable1, #sortable2" ).sortable({
-      connectWith: ".connectedSortable"
+    $( "#Ready, #Development, #Done" ).sortable({
+      connectWith: ".connectedSortable",
+      dropOnEmpty: true
     }).disableSelection();
   });
   </script>
   </head>
   <body>
     <div class="row">
-      <ul class="sortable1">
-         <li><%= title %></li>
+      <ul id="Ready" class="connectedSortable cell">
+        <% for(var i=0; i<tasks.length; i++) { %> 
+          <li><%= tasks[i].title %></li>
+        <% } %>
       </ul>
-      <ul class="sortable2">
-         <li><%= title %></li>
+      <ul id="Development" class="connectedSortable cell">
+
+      </ul>
+      <ul id="Done" class="connectedSortable cell">
+
       </ul>
     </div>
   </body>
