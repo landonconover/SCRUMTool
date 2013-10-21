@@ -19,6 +19,16 @@
     </style>
   </head>
   <body>
-    <p>Hello how low</p>
+    <div class="row">
+        <ul>
+            <% for(var i=0; i<story[0].tasks.length; i++) { %>
+                <li>
+                    <p>
+                        <%= task.title %>
+                    </p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
   </body>
 </html>
