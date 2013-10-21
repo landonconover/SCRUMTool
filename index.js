@@ -7,6 +7,18 @@ var WebSocketServer = require('ws').Server
   , ws = new WebSocketServer({port: 8888});
 
 
+ws.on('connection', function(ws) {
+	console.log("A New Socket is Connected");
+	ws.on('message',function(msg){
+		console.log("A Message is received: " + msg);
+	});
+});
+
+ws.broadcast = function(data) {
+    for(var i in this.clients)
+        this.clients[i].send(data);
+};
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -30,6 +42,7 @@ client.on("connect",function(){
 
 //Some Server configuration
 app.use(express.bodyParser());
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 //Get latest movie
