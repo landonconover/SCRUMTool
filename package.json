@@ -13,5 +13,11 @@
   "author": "",
   "license": "BSD",
   "readmeFilename": "README.md",
-  "gitHead": "05282ab986777801c1f2da1ab44d47de90aa91ef"
+  "gitHead": "05282ab986777801c1f2da1ab44d47de90aa91ef",
+  "dependencies": {
+    "express": "~3.4.1",
+    "mongoose": "~3.6.20",
+    "ejs": "~0.8.4",
+    "socket.io": "~0.9.12"
+  }
 }
