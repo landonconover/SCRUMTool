@@ -47,15 +47,16 @@
         var task_id = ui.item.data("id");
         var stage_id = $(this).data("id");
         console.log("event: " + task_id + " " + stage_id);
-        ws.send({ taskId: task_id, stageId: stage_id});
+        var jsonString =  JSON.stringify({ taskId: task_id, stageId: stage_id});
+        ws.send(jsonString);
       }
     }).disableSelection();
   });
 
-  ws.onmessage = function (evt) 
-     { 
-        console.log(evt);
-     };
+  // ws.onmessage = function (evt) 
+  //    { 
+  //       console.log(evt);
+  //    };
 
   </script>
   </head>

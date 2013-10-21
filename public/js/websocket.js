@@ -5,12 +5,11 @@
      ws.onopen = function()
      {
         //Connection to Web Socket Server is Established
-        var data = {hello:"world"};
-        ws.send(JSON.stringify(data));
      };
      ws.onmessage = function (evt) 
      { 
         //A Message is received
+        console.log(evt);
      };
      ws.onclose = function()
      { 

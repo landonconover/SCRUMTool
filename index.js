@@ -7,18 +7,26 @@ var WebSocketServer = require('ws').Server
   , ws = new WebSocketServer({port: 8888});
 
 
+var broadcast = function(socket,data) {
+    for(var i in socket.clients)
+        socket.clients[i].send(data);
+};
+
 ws.on('connection', function(ws) {
 	console.log("A New Socket is Connected");
 	ws.on('message',function(msg){
 		var data = JSON.parse(msg);
-		console.log("A Message is received: " + data.hello);
+		model.Task.findOne({_id: data.taskId }, function (err, task) {
+		task.stageId = data.stageId;
+		task.save(function(err, task, numberAffected) {
+			console.log('task updated');
+			broadcast(ws,task);
+		});
+	});	
+		console.log(data);
 	});
 });
 
-ws.broadcast = function(data) {
-    for(var i in this.clients)
-        this.clients[i].send(data);
-};
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
