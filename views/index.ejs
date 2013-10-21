@@ -50,7 +50,7 @@
     <div class="row">
       <ul id="Ready" class="connectedSortable cell">
         <% for(var i=0; i<tasks.length; i++) { %> 
-          <li><%= tasks[i].title %></li>
+          <li data-id ="<%= tasks[i]._id %>"><%= tasks[i].title %></li>
         <% } %>
       </ul>
       <ul id="Development" class="connectedSortable cell">
