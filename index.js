@@ -3,16 +3,8 @@ var express = require('express'),
 var mongoose = require('mongoose');
 var model = require('./model.js');
 var redis = require('redis');
-<<<<<<< HEAD
 var WebSocketServer = require('ws').Server
-  , wss = new WebSocketServer({port: 8080});
-=======
-var ws = require('ws');
-var express = require('express');
-var app = express();
->>>>>>> 944645a424bb129dc05696fad0ba935651ba4853
-
-var io = require('socket.io').listen(8080);
+  , ws = new WebSocketServer({port: 8080});
 
 
 var db = mongoose.connection;
