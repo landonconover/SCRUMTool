@@ -3,7 +3,8 @@ var express = require('express'),
 var mongoose = require('mongoose');
 var model = require('./model.js');
 var redis = require('redis');
-var ws = require('ws');
+var WebSocketServer = require('ws').Server
+  , wss = new WebSocketServer({port: 8080});
 
 var io = require('socket.io').listen(8080);
 
