@@ -1,22 +1,10 @@
-var mongoose = require('mongoose'),
-    db = mongoose.connection;
-
-//Listen to some database connection events
-db.on('error', console.error);
-db.once('open', function() {
-  console.log('Database Connected.');
-});
-
-//Connect to the database
-mongoose.connect('mongodb://cemo:cemo@mongo.onmodulus.net:27017/ja3zudEb');
-
 //Create the sprint schema
 var sprintSchema = new mongoose.Schema({
   name: { type: String }
 });
 
 //Sprint database object
-var Sprint = mongoose.model('Sprint', sprintSchema);
+module.exports.Sprint = mongoose.model('Sprint', sprintSchema);
 
 
 //Create the story schema
@@ -26,7 +14,7 @@ var storySchema = new mongoose.Schema({
 });
 
 //Story database object
-var Story = mongoose.model('Story', storySchema);
+module.exports.Story = mongoose.model('Story', storySchema);
 
 
 //Create the task schema
@@ -38,7 +26,7 @@ var taskSchema = new mongoose.Schema({
 });
 
 //Task database object
-var Task = mongoose.model('Task', taskSchema);
+module.exports.Task = mongoose.model('Task', taskSchema);
 
 
 //Create the stage schema
@@ -47,7 +35,7 @@ var stageSchema = new mongoose.Schema({
 });
 
 //Stage database object
-var Stage = mongoose.model('Stage', stageSchema);
+module.exports.Stage = mongoose.model('Stage', stageSchema);
 
 
 //Create the owner schema
@@ -56,5 +44,5 @@ var ownerSchema = new mongoose.Schema({
 });
 
 //Stage database object
-var Owner = mongoose.model('Owner', ownerSchema);
+module.exports.Owner = mongoose.model('Owner', ownerSchema);
 
