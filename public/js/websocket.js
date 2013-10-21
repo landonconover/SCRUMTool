@@ -5,7 +5,8 @@
      ws.onopen = function()
      {
         //Connection to Web Socket Server is Established
-        ws.send("Hello From Client");
+        var data = {hello:"world"};
+        ws.send(JSON.stringify(data));
      };
      ws.onmessage = function (evt) 
      { 
