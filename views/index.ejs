@@ -48,13 +48,15 @@
   <body>
     <div class="row">
       <ul id="Ready" class="connectedSortable cell">
-         <li><%= title %></li>
+        <% for(var i=0; i<tasks.length; i++) { %> 
+          <li><%= tasks[i].title %></li>
+        <% } %>
       </ul>
       <ul id="Development" class="connectedSortable cell">
-         <li><%= title %></li>
+
       </ul>
       <ul id="Done" class="connectedSortable cell">
-         <li><%= title %></li>
+
       </ul>
     </div>
   </body>

@@ -34,13 +34,13 @@ app.set('view engine', 'ejs');
 
 //Get latest movie
 app.get('/', function(req, res) {
-	model.Task.findOne({}, function(err, modelo){
+	model.Task.find({}, function(err, modelo){
 		console.log(arguments);
 		if(err) {
 	      return res.send(err.message);
 	    }
 	    console.log(modelo);
-		res.render('index', modelo);
+		res.render('index', { tasks : modelo });
 	});
   
 });
