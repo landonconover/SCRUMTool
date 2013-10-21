@@ -34,7 +34,14 @@ app.set('view engine', 'ejs');
 
 //Get latest movie
 app.get('/', function(req, res) {
-  res.render('index');
+	model.Task.findOne({}, function(err, modelo){
+		if(err) {
+	      return res.send(err.message);
+	    }
+	    console.log(modelo);
+		res.render('index', modelo);
+	});
+  
 });
 
 app.post("/Task/Move", function(req, res) {
