@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var model = require('./model.js');
 var redis = require('redis');
 var WebSocketServer = require('ws').Server
-  , ws = new WebSocketServer({port: 8080});
+  , ws = new WebSocketServer({port: 8888});
 
 
 var db = mongoose.connection;
