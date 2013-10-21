@@ -35,6 +35,7 @@ app.set('view engine', 'ejs');
 //Get latest movie
 app.get('/', function(req, res) {
 	model.Task.findOne({}, function(err, modelo){
+		console.log(arguments);
 		if(err) {
 	      return res.send(err.message);
 	    }
