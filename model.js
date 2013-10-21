@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 //Create the sprint schema
 var sprintSchema = new mongoose.Schema({
   name: { type: String }
