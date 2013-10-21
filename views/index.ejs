@@ -41,22 +41,29 @@
   $(function() {
     $( "#Ready, #Development, #Done" ).sortable({
       connectWith: ".connectedSortable",
-      dropOnEmpty: true
+      dropOnEmpty: true,
+      receive: function( event, ui ) {
+        var task_id = ui.item.data("id");
+        var stage_id = $(this).data("id");
+        console.log("event: " + task_id + " " + stage_id);
+        ws.send({ taskId: task_id, stageId: stage_id});
+      }
     }).disableSelection();
   });
+
   </script>
   </head>
   <body>
     <div class="row">
-      <ul id="Ready" class="connectedSortable cell">
+      <ul id="Ready" data-id="52659b020b40ee70822fca13" class="connectedSortable cell">
         <% for(var i=0; i<tasks.length; i++) { %> 
           <li data-id ="<%= tasks[i]._id %>"><%= tasks[i].title %></li>
         <% } %>
       </ul>
-      <ul id="Development" class="connectedSortable cell">
+      <ul id="Development" data-id="5265a613a1588bfc8fd66774" class="connectedSortable cell">
 
       </ul>
-      <ul id="Done" class="connectedSortable cell">
+      <ul id="Done" data-id="5265a61da1588bfc8fd66775" class="connectedSortable cell">
 
       </ul>
     </div>
